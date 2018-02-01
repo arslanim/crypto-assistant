@@ -1,11 +1,9 @@
-import { Component } from "@angular/core";
-
 export class Root {
   public title: string;
-  public component: Component;
+  public component: any;
   public isInitial: boolean;
 
-  constructor(title: string, component: Component, isInitial: boolean = false) {
+  constructor(title: string, component: any, isInitial: boolean = false) {
     this.title = title;
     this.component = component;
     this.isInitial = isInitial;
