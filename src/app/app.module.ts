@@ -9,16 +9,22 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RatePage } from "../pages/rate/rate";
 import { ExmoService } from "./services/exmo-service/exmo.service";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {ErrorHttpInterceptor} from "./interceptors/error-http.interceptor";
+import {ErrorHttpInterceptorService} from "./services/error-http-interseptor-service/error-http-interceptor.service";
+import {ErrorComponent} from "./components/error/error";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    RatePage
+    RatePage,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,7 +35,13 @@ import { ExmoService } from "./services/exmo-service/exmo.service";
   providers: [
     StatusBar,
     SplashScreen,
+    ErrorHttpInterceptorService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHttpInterceptor,
+      multi: true
+    },
     ExmoService
   ]
 })

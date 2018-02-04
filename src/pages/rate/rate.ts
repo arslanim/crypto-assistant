@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {ExmoService} from "../../app/services/exmo-service/exmo.service";
 
 /**
  * Generated class for the RatePage page.
@@ -13,13 +14,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-rate',
   templateUrl: 'rate.html',
 })
-export class RatePage {
+export class RatePage implements OnInit {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private exmoService: ExmoService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RatePage');
   }
 
+  ngOnInit() {
+    this.exmoService.getTicker().subscribe(
+      (data) => {
+        console.log(data);
+      }
+    );
+  }
 }
