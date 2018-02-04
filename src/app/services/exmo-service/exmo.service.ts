@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import {EXMO_SERVICE_CONFIG} from "./exmo.service.config";
-import {Observable} from "rxjs/Observable";
+import { EXMO_SERVICE_CONFIG } from "./exmo.service.config";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class ExmoService {
@@ -13,6 +13,7 @@ export class ExmoService {
   }
 
   getTicker(): Observable<any> {
-    return this.http.get(this.apiUrl.baseUrl + this.apiUrl.ticker)
+    //return this.http.get(this.apiUrl.baseUrl + this.apiUrl.ticker)
+    return this.http.get('./assets/test-data/ticker.json');
   }
 }
