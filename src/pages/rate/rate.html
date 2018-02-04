@@ -7,6 +7,13 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Pairs</ion-label>
+      <ion-select [(ngModel)]="selectedPair" (ionChange)="onChangePair($event)">
+        <ion-option *ngFor="let pair of ratePairs" [value]="pair">{{pair}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </ion-content>

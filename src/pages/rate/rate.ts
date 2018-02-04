@@ -2,19 +2,16 @@ import {Component, OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ExmoService} from "../../app/services/exmo-service/exmo.service";
 
-/**
- * Generated class for the RatePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-rate',
   templateUrl: 'rate.html',
 })
 export class RatePage implements OnInit {
+
+  public ratePairs = [];
+  public selectedPair: string;
+  public ticker: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private exmoService: ExmoService) {
   }
@@ -26,7 +23,22 @@ export class RatePage implements OnInit {
   ngOnInit() {
     this.exmoService.getTicker().subscribe(
       (data) => {
-        console.log(data);
+        this.prepareRatePares(data);
+      }
+    );
+  }
+
+  prepareRatePares(data: any) {
+    for (let pair in data) {
+      this.ratePairs.push(pair);
+    }
+  }
+
+  onChangePair(value: string) {
+    this.exmoService.getTicker().subscribe(
+      (data) => {
+        this.ticker = data[value];
+        console.log(this.ticker);
       }
     );
   }
