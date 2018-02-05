@@ -13,13 +13,15 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ErrorHttpInterceptor} from "./interceptors/error-http.interceptor";
 import {ErrorHttpInterceptorService} from "./services/error-http-interseptor-service/error-http-interceptor.service";
 import {ErrorComponent} from "./components/error/error";
+import {RateComponent} from "./components/rate/rate";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     RatePage,
-    ErrorComponent
+    ErrorComponent,
+    RateComponent
   ],
   imports: [
     BrowserModule,

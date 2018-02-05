@@ -1,0 +1,38 @@
+ <ion-grid [hidden]="!rate">
+  <ion-row>
+    <ion-col col-3>Avg</ion-col>
+    <ion-col col-9> {{ (rate) ? (rate.avg) : ('') }} </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3>Buy price</ion-col>
+    <ion-col col-9> {{ (rate) ? (rate.buy_price) : ('') }} </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3>High</ion-col>
+    <ion-col col-9> {{ (rate) ? (rate.high) : ('') }} </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3>Last trade</ion-col>
+    <ion-col col-9> {{ (rate) ? (rate.last_trade) : ('') }} </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3>Low</ion-col>
+    <ion-col col-9> {{ (rate) ? (rate.low) : ('') }} </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3>Sell price</ion-col>
+    <ion-col col-9> {{ (rate) ? (rate.sell_price) : ('') }} </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3>Updated</ion-col>
+    <ion-col col-9> {{ (rate) ? (rate.updated) : ('') }} </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3>Vol</ion-col>
+    <ion-col col-9> {{ (rate) ? (rate.vol) : ('') }} </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3> Vol curr </ion-col>
+    <ion-col col-9> {{ (rate) ? (rate.vol_curr) : ('') }} </ion-col>
+  </ion-row>
+</ion-grid>
