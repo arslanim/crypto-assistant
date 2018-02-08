@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import { Rate } from "../../models/rate.model";
 
 @Component({
   selector: 'rate',
@@ -6,7 +7,7 @@ import {Component, Input} from '@angular/core';
 })
 export class RateComponent {
 
-  @Input() rate: any;
+  @Input() rate: Rate;
 
   constructor() { }
 

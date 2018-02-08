@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ExmoService} from "../../app/services/exmo-service/exmo.service";
+import {Rate} from "../../app/models/rate.model";
 
 @IonicPage()
 @Component({
@@ -11,7 +12,7 @@ export class RatePage implements OnInit {
 
   public ratePairs = [];
   public selectedPair: string;
-  public ticker: any;
+  public rate: Rate;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private exmoService: ExmoService) {
   }
@@ -21,24 +22,17 @@ export class RatePage implements OnInit {
   }
 
   ngOnInit() {
-    this.exmoService.getTicker().subscribe(
-      (data) => {
-        this.prepareRatePares(data);
+    this.exmoService.getRatePairs().subscribe(
+      (ratePairs: string[]) => {
+        this.ratePairs = ratePairs;
       }
     );
   }
 
-  prepareRatePares(data: any) {
-    for (let pair in data) {
-      this.ratePairs.push(pair);
-    }
-  }
-
-  onChangePair(value: string) {
-    this.exmoService.getTicker().subscribe(
-      (data) => {
-        this.ticker = data[value];
-        console.log(this.ticker);
+  onChangePair(rateName: string) {
+    this.exmoService.getRateByName(rateName).subscribe(
+      (rate: Rate) => {
+        this.rate = rate;
       }
     );
   }
